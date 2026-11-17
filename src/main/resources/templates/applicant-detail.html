@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout(~{::main})}">
+
+<main>
+
+    <div class="container mt-4">
+
+        <div class="card shadow-sm">
+
+            <div class="card-header">
+                <h4>Applicant Details</h4>
+            </div>
+
+            <div class="card-body">
+
+                <form th:object="${applicant}">
+                <h5> Personal Information</h5>
+                    <div class="mb-3 px-2">
+                        <label class="form-label">First Nmae</label>
+                        <input th:field="*{firstName}" class="form-control" readonly>
+                    </div>
+
+                    <div class="mb-3 px-2">
+                        <label class="form-label">Middle Name</label>
+                        <input th:field="*{middleName}" class="form-control" readonly>
+                    </div>
+                    <div class="mb-3 px-2">
+                        <label class="form-label">Last Name</label>
+                        <input th:field="*{lastName}" class="form-control" readonly>
+                    </div>
+                    <div class="mb-3 px-2">
+                        <label class="form-label">
+                            Date of Birth
+                        </label>
+                        <input type="date"
+                               name="dateOfBirth"
+                               th:value="${#temporals.format(applicant.dateOfBirth, 'yyyy-MM-dd')}"
+                               class="form-control" readonly>
+                    </div>
+                    <div class="mb-3 px-2">
+                        <label class="form-label">Last 4 Digit SSN</label>
+                        <input th:field="*{ssnLast4}" class="form-control"
+                               maxlength="4"
+                               pattern="[0-9]{4}"
+                               inputmode="numeric"
+                               minlength="4" readonly>
+
+                    </div>
+                    <h5>Contact Information</h5>
+                    <div class="mb-3 px-2">
+                        <label class="form-label">Email</label>
+                        <input th:field="*{email}" class="form-control" readonly>
+                    </div>
+                    <div class="mb-3 px-2">
+                        <label class="form-label">Phone</label>
+                        <input th:field="*{phone}" class="form-control" readonly>
+                    </div>
+                    <h5>System Information</h5>
+                    <div class="mb-3 px-2">
+                        <label class="form-label">Create Dat</label>
+                        <input type="date" class="form-control"
+                               th:value="${#temporals.format(applicant.createdDate, 'yyyy-MM-dd')}" readonly>
+                    </div>
+
+                    <div class="mb-3 px-2">
+                        <label class="form-label">Recently Update Date</label>
+                        <input type="date"class="form-control"
+                               th:value="${#temporals.format(application.updatedDate), 'yyyy-MM-dd')}" readonly>
+                    </div>
+                    <div class="mb-3 px-2">
+                        <a th:href="@{/applicant/list}" class="btn btn-primary"> Back to Applicants</a>
+                        <a th:href="@{/applicant/edit/{id}(id=${applicant.id})}" class="btn btn-secondary">Edit</a>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</main>
+</html>

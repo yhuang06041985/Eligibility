@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout(~{::main})}">
+
+<main>
+
+    <h2>Eligibility Dashboard</h2>
+
+    <hr>
+
+    <div class="row">
+
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5>Households</h5>
+                    <!--h3 th:text="${householdCount}">0</h3-->
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5>Applications</h5>
+                    <!--h3 th:text="${applicationCount}">0</h3-->
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</main>
+</html>

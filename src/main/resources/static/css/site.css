@@ -1,0 +1,44 @@
+
+/* General */
+body {
+    background-color: #f5f6fa;
+    min-height: 100vh;
+}
+
+/* Navigation */
+.navbar {
+    padding: 12px 20px;
+}
+
+.navbar-brand {
+    font-size: 1.3rem;
+}
+
+/* Main content */
+main {
+    min-height: calc(100vh - 130px);
+}
+
+/* Dashboard cards */
+.dashboard-card {
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-3px);
+}
+
+.dashboard-card h2 {
+    color: #0d6efd;
+    margin: 15px 0;
+}
+
+/* Footer */
+.footer {
+    background-color: #ffffff;
+    border-top: 1px solid #dee2e6;
+    color: #6c757d;
+}

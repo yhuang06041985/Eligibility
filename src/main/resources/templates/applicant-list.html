@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout(~{::main})}">
+
+<!-- Main Content -->
+<main class="container-fluid dashboard-container">
+    <div class="container mt-4">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2 class="mb-0">Applicant List</h2>
+            <a th:href="@{/applicant/new}" class="btn btn-info">
+                Create Applicant
+            </a>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-striped table-hover table-bordered">
+                <thead class="table-dark">
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Date of Birth</th>
+                    <th>Last 4 Digit SSN</th>
+                    <th>Phone</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr th:each="applicant : ${applicants}">
+                    <td th:text="${applicant.firstName}"></td>
+                    <td th:text="${applicant.lastName}"></td>
+                    <td th:text="${applicant.dateOfBirth}"></td>
+                    <td th:text="${applicant.ssnLast4}"></td>
+                    <td th:text="${applicant.phone}"></td>
+                    <td>
+                        <a th:href="@{/applicant/edit/{id}(id=${applicant.id})}"
+                           class="btn btn-primary btn-sm">Edit</a>
+                        <a th:href="@{/applicant/detail/{id}(id=${applicant.id})}"
+                           class="btn btn-primary btn-sm">View</a>
+                    </td>
+
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout(~{::main})}">
+
+<main>
+
+    <div class="container mt-4">
+
+        <div class="card shadow-sm">
+
+            <div class="card-header">
+                <h5>Applicant Create</h5>
+            </div>
+
+            <div class="card-body">
+
+                <form th:action="@{/applicant/save}"
+                      method="post"
+                      th:object="${applicant}">
+                <div class="mb-3">
+                    <label class="form-label">First Nmae</label>
+                    <input th:field="*{firstName}" required class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Middle Name</label>
+                    <input th:field="*{middleName}" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Last Name</label>
+                    <input th:field="*{lastName}" required class="form-control">
+                </div>
+                    <div class="mb-3">
+                        <label class="form-label">
+                            Date of Birth
+                        </label>
+                        <input required type="date" max="now()" th:field="*{dateOfBirth}" class="form-control">
+                    </div>
+                <div class="mb-3">
+                    <label class="form-label">Last 4 Digit SSN</label>
+                    <input th:field="*{ssnLast4}" class="form-control"
+                           maxlength="4"
+                           pattern="[0-9]{4}"
+                           inputmode="numeric"
+                           minlength="4">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <input th:field="*{email}" type="email" required class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Phone</label>
+                    <input th:field="*{phone}" required class="form-control">
+                </div>
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary">Create</button>
+                    <button type="reset" class="btn btn-secondary">Clear</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</main>
+</html>
