@@ -34,7 +34,7 @@ public class AddressController {
     public String displayAddress(Model model)
     {
         model.addAttribute("address", new Address());
-        model.addAttribute("addressTypes", addressTypeService.getAddressType());
+        model.addAttribute("addressTypes", addressTypeService.getAllAddressType());
         return "address-create";
     }
 
@@ -84,7 +84,7 @@ public class AddressController {
         Applicant applicant = applicantService.getApplicateById(applicantId);
         address.setApplicant(applicant);
         Address addressObn = addressService.saveAddress(address);
-        return "redirect:/";
+        return "redirect:/address/list";
     }
 
     @GetMapping("/list")
@@ -104,19 +104,37 @@ public class AddressController {
                               Model model)
     {
         model.addAttribute("address", addressService.getAddressById(addressId));
+        model.addAttribute("addressTypes", addressTypeService.getAllAddressType());
         return "address-update";
     }
 
     @PostMapping("/update")
     public String updateAddress(@Valid @ModelAttribute("address") Address address,
-                    BindingResult results, Model model) {
+                                @RequestParam("addressId") BigInteger addressId,
+                                BindingResult results, Model model) {
         if (results.hasErrors()) {
             model.addAttribute("address", address);
             return "address-update";
         }
 
-        System.out.println(address.getId());
-        return "redirect:/";
+        Address addressObm = addressService.updateAddress(addressId, address);
+        return "redirect:/address/list";
+    }
+
+    @GetMapping("/detail/{id}")
+    public String displayAddressDetail(@PathVariable("id") BigInteger addressId,
+                              Model model)
+    {
+        model.addAttribute("address", addressService.getAddressById(addressId));
+        model.addAttribute("addressTypes", addressTypeService.getAllAddressType());
+        return "address-detail";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String deleteAddress(@PathVariable("id") BigInteger addressId)
+    {
+         addressService.removeAddress(addressId);
+        return "redirect:/address/list";
     }
 
 }

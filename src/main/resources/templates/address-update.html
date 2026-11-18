@@ -18,7 +18,8 @@
                       method="post"
                       th:object="${address}">
                     <!-- Hidden fields -->
-                    <input type="hidden" th:value="${address.applicant}" >
+                    <input type="hidden" th:field="*{applicant.id}" >
+                    <input type="hidden" th:value="${address.id}" name="addressId">
 
                     <div class="mb-3">
                             <label class="form-label">Applicant</label>
@@ -62,17 +63,19 @@
                     <div class="mb-3">
                         <label class="form-label">Start Date</label>
                         <input type="date"
-                               th:field="*{startDate}"
+                               name="startDate"
+                               th:value="${#temporals.format(address.startDate, 'yyyy-MM-dd')}"
                                required
                                class="form-control">
                     </div>
                     <div class="mb-3">
                         <label class="form-label">End Date</label>
                         <input type="date"
-                               th:field="*{endDate}"
-                               required
+                               name="startDate"
+                               th:value="${#temporals.format(address.startDate, 'yyyy-MM-dd')}"
+
                                class="form-control">
-                    </div>
+                                      </div>
                     <div class="mb-3">
                         <label class="form-label">Is Current</label>
                         <input type="checkbox" th:field="*{isCurrent}">

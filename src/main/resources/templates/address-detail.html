@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout(~{::main})}">
+
+<main>
+
+    <div class="container mt-4">
+
+        <div class="card shadow-sm">
+
+            <div class="card-header">
+                <h5>Address Detail</h5>
+            </div>
+
+            <div class="card-body">
+
+                <form th:object="${address}">
+                    <!-- Hidden fields -->
+                    <input type="hidden" th:field="*{applicant.id}" >
+                    <input type="hidden" th:value="${address.id}" name="addressId">
+
+                    <div class="mb-3">
+                        <label class="form-label">Applicant</label>
+                        <input th:value="${address.applicant.firstName + ' ' + address.applicant.lastName}"
+                               readonly>
+
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Address Type</label>
+                        <select class="form-select" th:field="*{addressType.id}"  readonly>
+                            <option value="" readonly>-- Select Address Type --</option>
+                            <option th:each="type : ${addressTypes}"
+                                    th:value="${type.id}"
+                                    readonly
+                                    th:text="${type.typeName}">
+                            </option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Street Address</label>
+                        <input readonly th:field="*{streetAddress}" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Apartment</label>
+                        <input th:field="*{apartment}"  readonly class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">City</label>
+
+                        <input th:field="*{city}" class="form-control"  readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">State</label>
+                        <input th:field="*{state}" class="form-control"
+                               readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Zip Code</label>
+                        <input th:field="*{zipCode}"  readonly class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Start Date</label>
+                        <input type="date"
+                               name="startDate"
+                               th:value="${#temporals.format(address.startDate, 'yyyy-MM-dd')}"
+                               readonly
+                               class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">End Date</label>
+                        <input type="date"
+                               name="startDate"
+                               th:value="${#temporals.format(address.startDate, 'yyyy-MM-dd')}"
+                               readonly
+                               class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Is Current</label>
+                        <input type="checkbox" th:field="*{isCurrent}" readonly>
+                    </div>
+                    <input type="date"
+                           name="startDate"
+                           th:value="${#temporals.format(address.createdDate, 'yyyy-MM-dd')}"
+                           readonly
+                           class="form-control">
+                    <div class="mb-3">
+                        <a th:href="@{/address/list}" class="btn btn-primary">Back to Address List</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>>
+
+</main>
+
+</html>

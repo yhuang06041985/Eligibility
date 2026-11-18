@@ -5,8 +5,12 @@
 <!-- Main Content -->
 <main class="container-fluid dashboard-container">
     <div class="container mt-4">
-
-        <h4 class="mb-3">Search Employee</h4>
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h3 class="mb-0">Search Address</h3>
+            <a th:href="@{/address/new}" class="btn btn-info">
+                Create Address
+            </a>
+        </div>
 
         <!-- Search Form -->
         <div class="card mb-4">
@@ -62,12 +66,6 @@
             </div>
         </div>
 
-        <div class="d-flex justify-content-between align-items-center mb-3">
-            <h2 class="mb-0">Applicant List</h2>
-            <a th:href="@{/address/new}" class="btn btn-info">
-                Create Address
-            </a>
-        </div>
 
         <div class="table-responsive">
             <table class="table table-striped table-hover table-bordered">
@@ -95,9 +93,9 @@
                         <a th:href="@{/address/edit/{id}(id=${address.id})}"
                            class="btn btn-primary btn-sm">Edit</a>
                         <a th:href="@{/address/detail/{id}(id=${address.id})}"
-                           class="btn btn-primary btn-sm">View</a>
+                           class="btn btn-info btn-sm">View</a>
                         <a th:href="@{/address/delete/{id}(id=${address.id})}"
-                           class="btn btn-primary btn-sm"
+                           class="btn btn-secondary btn-sm"
                            onclick="return confirm('Are you sure you want to delete this address?')">
                             Delete</a>
                     </td>

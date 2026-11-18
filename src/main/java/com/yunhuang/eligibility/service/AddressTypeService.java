@@ -15,7 +15,7 @@ public class AddressTypeService {
         this.addressTypeRepository = addressTypeRepository;
     }
 
-    public List<AddressType> getAddressType() {
+    public List<AddressType> getAllAddressType() {
         return addressTypeRepository.findAll();
     }
 }

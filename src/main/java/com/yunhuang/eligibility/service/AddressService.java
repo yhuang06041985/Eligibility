@@ -47,7 +47,6 @@ public class AddressService {
         Address updateObj = getAddressById(id);
         updateObj.setAddressType(address.getAddressType());
         updateObj.setApartment(address.getApartment());
-        updateObj.setApplicant(address.getApplicant());
         updateObj.setCity(address.getCity());
         updateObj.setEndDate(address.getEndDate());
         updateObj.setIsCurrent(address.getIsCurrent());
@@ -55,12 +54,22 @@ public class AddressService {
         updateObj.setStreetAddress(address.getStreetAddress());
         updateObj.setState(address.getState());
         updateObj.setAddressType(address.getAddressType());
-        return addressRepository.save(address);
+        return  addressRepository.save(updateObj);
+
     }
 
     public List<AddressApplicantDto> getAddressApplicant(String firstName,
          String lastName, String email, String phone)
     {
         return addressRepository.findAddressAndApplicant(firstName, lastName, email, phone);
+    }
+
+    public void removeAddress(BigInteger addressId)
+    {
+        Address deleteObj = getAddressById(addressId);
+        if (deleteObj != null)
+        {
+            addressRepository.delete(deleteObj);
+        }
     }
 }
