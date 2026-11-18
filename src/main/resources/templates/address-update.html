@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout(~{::main})}">
+
+<main>
+
+    <div class="container mt-4">
+
+        <div class="card shadow-sm">
+
+            <div class="card-header">
+                <h5>Address Update</h5>
+            </div>
+
+            <div class="card-body">
+
+                <form th:action="@{/address/update}"
+                      method="post"
+                      th:object="${address}">
+                    <!-- Hidden fields -->
+                    <input type="hidden" th:value="${address.applicant}" >
+
+                    <div class="mb-3">
+                            <label class="form-label">Applicant</label>
+                            <input th:value="${address.applicant.firstName + ' ' + address.applicant.lastName}"
+                                   readonly>
+
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Address Type</label>
+                        <select class="form-select" th:field="*{addressType.id}" required>
+                            <option value="">-- Select Address Type --</option>
+                            <option th:each="type : ${addressTypes}"
+                                    th:value="${type.id}"
+                                    th:text="${type.typeName}">
+                            </option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Street Address</label>
+                        <input th:field="*{streetAddress}" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Apartment</label>
+                        <input th:field="*{apartment}"  class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">City</label>
+
+                        <input th:field="*{city}" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">State</label>
+                        <input th:field="*{state}" class="form-control"
+                               required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Zip Code</label>
+                        <input th:field="*{zipCode}" required class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Start Date</label>
+                        <input type="date"
+                               th:field="*{startDate}"
+                               required
+                               class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">End Date</label>
+                        <input type="date"
+                               th:field="*{endDate}"
+                               required
+                               class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Is Current</label>
+                        <input type="checkbox" th:field="*{isCurrent}">
+                    </div>
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-primary">update</button>
+                        <button type="reset" class="btn btn-secondary">Clear</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>>
+
+</main>
+
+</html>

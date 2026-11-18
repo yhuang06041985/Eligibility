@@ -1,6 +1,8 @@
 package com.yunhuang.eligibility.service;
 
 import com.yunhuang.eligibility.model.Address;
+import com.yunhuang.eligibility.model.AddressApplicantDto;
+import com.yunhuang.eligibility.model.Applicant;
 import com.yunhuang.eligibility.repository.AddressRepository;
 import org.springframework.stereotype.Service;
 
@@ -11,15 +13,17 @@ import java.util.List;
 @Service
 public class AddressService {
     private final AddressRepository addressRepository;
+    private final ApplicantService applicantService;
 
-    private AddressService(AddressRepository addressRepository)
+    private AddressService(AddressRepository addressRepository, ApplicantService applicantService)
     {
         this.addressRepository = addressRepository;
+        this.applicantService = applicantService;
     }
 
-    public List<Address> getAddressByApplicant(BigInteger applicantId)
+    public List<Address> getAddressByApplicant(Applicant applicant)
     {
-        return addressRepository.findByApplicant(applicantId);
+        return addressRepository.findByApplicant(applicant);
     }
 
     public List<Address> getAllAddress()
@@ -34,7 +38,7 @@ public class AddressService {
 
     public Address saveAddress(Address address)
     {
-        address.setCreateDate(LocalDateTime.now());
+        address.setCreatedDate(LocalDateTime.now());
         return addressRepository.save(address);
     }
 
@@ -50,6 +54,13 @@ public class AddressService {
         updateObj.setStartDate(address.getStartDate());
         updateObj.setStreetAddress(address.getStreetAddress());
         updateObj.setState(address.getState());
+        updateObj.setAddressType(address.getAddressType());
         return addressRepository.save(address);
+    }
+
+    public List<AddressApplicantDto> getAddressApplicant(String firstName,
+         String lastName, String email, String phone)
+    {
+        return addressRepository.findAddressAndApplicant(firstName, lastName, email, phone);
     }
 }

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout(~{::main})}">
+
+<main>
+  <div class="container mt-4">
+
+    <h4 class="mb-3">Search Employee</h4>
+
+    <!-- Search Form -->
+    <div class="card mb-4">
+      <div class="card-body">
+
+        <form th:action="@{/address/search-applicant-name}"
+              method="get">
+
+          <div class="row mb-3">
+
+            <div class="col-md-5">
+              <label class="form-label">First Name</label>
+              <input type="text"
+                     name="firstName"
+                     class="form-control"
+                     th:value="${firstName}">
+            </div>
+
+            <div class="col-md-5">
+              <label class="form-label">Last Name</label>
+              <input type="text"
+                     name="lastName"
+                     class="form-control"
+                     th:value="${lastName}">
+            </div>
+
+            <div class="col-md-5">
+              <label class="form-label">Email</label>
+              <input type="text"
+                     name="email"
+                     class="form-control"
+                     th:value="${email}">
+            </div>
+            <div class="col-md-5">
+              <label class="form-label">Phone Number</label>
+              <input type="text"
+                     name="phone"
+                     class="form-control"
+                     th:value="${phone}">
+            </div>
+
+            <div class="col-md-12 mt-3">
+              <button type="submit"
+                      class="btn btn-primary">
+                Search
+              </button>
+            </div>
+
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+
+    <!-- Search Results -->
+    <div class="card">
+      <div class="card-header">
+        <h5 class="mb-0">Search Results</h5>
+      </div>
+
+      <div class="card-body">
+
+        <table class="table table-striped table-hover">
+
+          <thead>
+          <tr>
+            <th>Applicant ID</th>
+            <th>Applicant Name</th>
+            <th>Action</th>
+          </tr>
+          </thead>
+
+          <tbody>
+
+          <tr th:each="applicant : ${applicantsearchDtos}">
+
+            <td th:text="${applicant.applicantId}"></td>
+
+            <td th:text="${applicant.fullName}"></td>
+
+            <td>
+              <button type="button"
+                      class="btn btn-primary btn-sm"
+                      th:attr="data-id=${applicant.applicantId},
+                                 data-name=${applicant.fullName}"
+                      onclick="selectApplicant(this)">
+                Select
+              </button>
+            </td>
+
+          </tr>
+
+          <tr th:if="${#lists.isEmpty(employeePayrateDtos)}">
+            <td colspan="3" class="text-center">
+              No employees found.
+            </td>
+          </tr>
+
+          </tbody>
+
+        </table>
+
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    function selectApplicant(button) {
+
+      if (window.opener && !window.opener.closed) {
+
+        window.opener.setApplicant(
+                button.dataset.id,
+                button.dataset.name
+
+        );
+
+        window.close();
+      }
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+</main>
+
+</html>

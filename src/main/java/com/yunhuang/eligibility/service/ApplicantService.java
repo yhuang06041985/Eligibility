@@ -1,6 +1,7 @@
 package com.yunhuang.eligibility.service;
 
 import com.yunhuang.eligibility.model.Applicant;
+import com.yunhuang.eligibility.model.ApplicantSearchDto;
 import com.yunhuang.eligibility.repository.ApplicantRepository;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -50,4 +51,12 @@ public class ApplicantService {
     {
         return applicantRepository.findAll(Sort.by(Sort.Direction.ASC, "lastName"));
     }
+
+    public List<ApplicantSearchDto> getApplicantByNameByEmailByPhone(
+            String firstName, String lastName, String email, String phone
+    )
+    {
+        return applicantRepository.findApplicantsByNameByEmailByPhone(firstName, lastName, email, phone);
+    }
+
 }

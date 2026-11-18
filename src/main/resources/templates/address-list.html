@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout(~{::main})}">
+
+<!-- Main Content -->
+<main class="container-fluid dashboard-container">
+    <div class="container mt-4">
+
+        <h4 class="mb-3">Search Employee</h4>
+
+        <!-- Search Form -->
+        <div class="card mb-4">
+            <div class="card-body">
+
+                <form th:action="@{/address/list}"
+                      method="get">
+
+                    <div class="row mb-3">
+
+                        <div class="col-md-5">
+                            <label class="form-label">First Name</label>
+                            <input type="text"
+                                   name="firstName"
+                                   class="form-control"
+                                   th:value="${firstName}">
+                        </div>
+
+                        <div class="col-md-5">
+                            <label class="form-label">Last Name</label>
+                            <input type="text"
+                                   name="lastName"
+                                   class="form-control"
+                                   th:value="${lastName}">
+                        </div>
+
+                        <div class="col-md-5">
+                            <label class="form-label">Email</label>
+                            <input type="text"
+                                   name="email"
+                                   class="form-control"
+                                   th:value="${email}">
+                        </div>
+                        <div class="col-md-5">
+                            <label class="form-label">Phone Number</label>
+                            <input type="text"
+                                   name="phone"
+                                   class="form-control"
+                                   th:value="${phone}">
+                        </div>
+
+                        <div class="col-md-12 mt-3">
+                            <button type="submit"
+                                    class="btn btn-primary">
+                                Search
+                            </button>
+                        </div>
+
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2 class="mb-0">Applicant List</h2>
+            <a th:href="@{/address/new}" class="btn btn-info">
+                Create Address
+            </a>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-striped table-hover table-bordered">
+                <thead class="table-dark">
+                <tr>
+                    <th>Application Name</th>
+                    <th>Address Type</th>
+                    <th>Street Address</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>Zip Code</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr th:each="address : ${addresslist}">
+                    <td th:text="${address.fullName}"></td>
+                    <td th:text="${address.addressType}"></td>
+                    <td th:text="${address.streetName}"></td>
+                    <td th:text="${address.city}"></td>
+                    <td th:text="${address.state}"></td>
+                    <td th:text="${address.zipCode}"></td>
+                    <td>
+                        <a th:href="@{/address/edit/{id}(id=${address.id})}"
+                           class="btn btn-primary btn-sm">Edit</a>
+                        <a th:href="@{/address/detail/{id}(id=${address.id})}"
+                           class="btn btn-primary btn-sm">View</a>
+                        <a th:href="@{/address/delete/{id}(id=${address.id})}"
+                           class="btn btn-primary btn-sm"
+                           onclick="return confirm('Are you sure you want to delete this address?')">
+                            Delete</a>
+                    </td>
+
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+</main>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</html>

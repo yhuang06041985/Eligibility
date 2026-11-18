@@ -15,7 +15,11 @@ public class Address {
     @ManyToOne
     @JoinColumn(name = "applicantId", nullable = false)
     private Applicant applicant;
-    private String addressType;
+
+    @ManyToOne
+    @JoinColumn(name="addressTypeId", nullable = false)
+    public AddressType addressType;
+
     private String streetAddress;
     private String apartment;
     private String city;
@@ -24,7 +28,7 @@ public class Address {
     private LocalDate startDate;
     private LocalDate endDate;
     private boolean isCurrent;
-    private LocalDateTime createDate;
+    private LocalDateTime createdDate;
 
     public void setId(BigInteger Ud)
     {
@@ -46,12 +50,12 @@ public class Address {
         return applicant;
     }
 
-    public void setAddressType(String addressType)
+    public void setAddressType(AddressType addressType)
     {
         this.addressType = addressType;
     }
 
-    public String getAddressType()
+    public AddressType getAddressType()
     {
         return addressType;
     }
@@ -96,7 +100,7 @@ public class Address {
         return state;
     }
 
-    public void getZipCode(String zipCode)
+    public void setZipCode(String zipCode)
     {
         this.zipCode = zipCode;
     }
@@ -136,14 +140,14 @@ public class Address {
         return isCurrent;
     }
 
-    public void setCreateDate(LocalDateTime createDate)
+    public void setCreatedDate(LocalDateTime createdDate)
     {
-        this.createDate = createDate;
+        this.createdDate = createdDate;
     }
 
-    public LocalDateTime getCreateDate()
+    public LocalDateTime getCreatedDate()
     {
-        return createDate;
+        return createdDate;
     }
 }
 
