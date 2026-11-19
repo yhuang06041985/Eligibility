@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout(~{::main})}">
+
+<!-- Main Content -->
+<main class="container-fluid dashboard-container">
+    <div class="container mt-4">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h3 class="mb-0">Search Household</h3>
+            <a th:href="@{/household/new}" class="btn btn-info">
+                Create Household
+            </a>
+        </div>
+
+        <!-- Search Form -->
+        <div class="card mb-4">
+            <div class="card-body">
+
+                <form th:action="@{/household/list}"
+                      method="get">
+
+                    <div class="row mb-3">
+
+                        <div class="col-md-5">
+                            <label class="form-label">Household Name</label>
+                            <input type="text"
+                                   name="householdName"
+                                   class="form-control"
+                                   th:value="${householdName}">
+                        </div>
+
+                        <div class="col-md-12 mt-3">
+                            <button type="submit"
+                                    class="btn btn-primary">
+                                Search
+                            </button>
+                        </div>
+
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+
+
+        <div class="table-responsive">
+            <table class="table table-striped table-hover table-bordered">
+                <thead class="table-dark">
+                <tr>
+                    <th>Household Name</th>
+
+                    <th>Actions</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr th:each="household : ${households}">
+                    <td th:text="${household.householdName}"></td>
+
+                    <td>
+
+                        <a th:href="@{/household/delete/{id}(id=${household.id})}"
+                           class="btn btn-danger"
+                           onclick="return confirm('Are you sure you want to delete this address?')">
+                            Delete</a>
+                    </td>
+
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+</main>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</html>

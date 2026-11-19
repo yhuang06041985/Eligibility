@@ -5,7 +5,7 @@
 <main>
   <div class="container mt-4">
 
-    <h4 class="mb-3">Search Employee</h4>
+    <h4 class="mb-3">Search Applicant</h4>
 
     <!-- Search Form -->
     <div class="card mb-4">
@@ -99,9 +99,9 @@
 
           </tr>
 
-          <tr th:if="${#lists.isEmpty(employeePayrateDtos)}">
+          <tr th:if="${#lists.isEmpty(applicantsearchDtos)}">
             <td colspan="3" class="text-center">
-              No employees found.
+              No applicant found.
             </td>
           </tr>
 
