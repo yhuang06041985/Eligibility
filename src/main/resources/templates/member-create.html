@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout(~{::main})}">
+
+<main>
+
+    <div class="container mt-4">
+
+        <div class="card shadow-sm">
+
+            <div class="card-header">
+                <h5>Household Member Create</h5>
+            </div>
+
+            <div class="card-body">
+
+                <form th:action="@{/household-member/save}"
+                      method="post"
+                      th:object="${address}">
+                    <!-- Hidden fields -->
+                    <input type="hidden" id="applicantId" name="applicantId">
+
+                    <div class="mb-3">
+
+                        <div class="input-group">
+
+                            <input type="text"
+                                   id="applicantFullName"
+                                   class="form-control"
+                                   placeholder="Select an Applicant"
+                                   readonly>
+
+                            <button type="button"
+                                    class="btn btn-outline-primary"
+                                    onclick="openApplicantWindow()">
+                                Select
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Address Type</label>
+                        <select class="form-select" th:field="*{addressType}" required>
+                            <option value="">-- Select Address Type --</option>
+                            <option th:each="type : ${addressTypes}"
+                                    th:value="${type.id}"
+                                    th:text="${type.typeName}">
+                            </option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Street Address</label>
+                        <input th:field="*{streetAddress}" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Apartment</label>
+                        <input th:field="*{apartment}"  class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">City</label>
+
+                        <input th:field="*{city}" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">State</label>
+                        <input th:field="*{state}" class="form-control"
+                               required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Zip Code</label>
+                        <input th:field="*{zipCode}" required class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Start Date</label>
+                        <input th:field="*{startDate}"  type="date" required class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">End Date</label>
+                        <input type="date" th:field="*{endDate}" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Is Current</label>
+                        <input type="checkbox" th:field="*{isCurrent}">
+                    </div>
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-primary">Create</button>
+                        <button type="reset" class="btn btn-secondary">Clear</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>>
+
+    <script>
+
+        function openApplicantWindow() {
+
+            window.open(
+                '/address/select-applicant',
+                'applicant-search',
+                'width=1000,height=650'
+            );
+
+        }
+
+        // Called by the child window
+        function setApplicant(applicantId, applicantFullName) {
+
+            document.getElementById('applicantId').value = applicantId;
+
+            document.getElementById('applicantFullName').value = applicantFullName;
+
+        }
+
+    </script>
+</main>
+
+
+</html>

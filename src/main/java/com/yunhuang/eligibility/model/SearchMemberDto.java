@@ -1,4 +1,4 @@
 package com.yunhuang.eligibility.model;
 
-public class HouseholdMember {
+public class SearchMemberDto {
 }
