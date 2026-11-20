@@ -85,13 +85,15 @@ public class HouseHoldController {
     }
 
     @GetMapping("/list")
-    public String displayHouseholds(@RequestParam(required = false) String householdName,
+    public String displayHouseholds(@RequestParam(required = false) BigInteger householdid,
+            @RequestParam(required = false) String householdName,
                                     Model model)
     {
-        if (householdName == null || householdName.isBlank())
+        if ((householdName == null || householdName.isBlank()) && householdid == null)
             model.addAttribute("households", houseHoldService.getAllHousehold());
         else
-            model.addAttribute("households", houseHoldService.getHouseholdByName(householdName));
+            model.addAttribute("households",
+                    houseHoldService.getHouseholdByIdByName(householdid, householdName));
 
         return "household-list";
     }

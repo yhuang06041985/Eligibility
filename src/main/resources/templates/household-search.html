@@ -1,10 +1,121 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout(~{::main})}">
+
+<main>
+    <div class="container mt-4">
+
+        <h4 class="mb-3">Search Household</h4>
+
+        <!-- Search Form -->
+        <div class="card mb-4">
+            <div class="card-body">
+
+                <form th:action="@{/member/search-household-name}"
+                      method="get">
+
+                    <div class="row mb-3">
+
+                        <div class="col-md-5">
+                            <label class="form-label">Houseehold Id</label>
+                            <input type="text"
+                                   name="householdId"
+                                   class="form-control"
+                                   th:value="${householdId}">
+                        </div>
+
+                        <div class="col-md-5">
+                            <label class="form-label">Household Name</label>
+                            <input type="text"
+                                   name="householdName"
+                                   class="form-control"
+                                   th:value="${householdName}">
+                        </div>
+
+                        <div class="col-md-12 mt-3">
+                            <button type="submit"
+                                    class="btn btn-primary">
+                                Search
+                            </button>
+                        </div>
+
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+
+        <!-- Search Results -->
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Search Results</h5>
+            </div>
+
+            <div class="card-body">
+
+                <table class="table table-striped table-hover">
+
+                    <thead>
+                    <tr>
+                        <th>Househod ID</th>
+                        <th>Household Name</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+
+                    <tr th:each="household : ${households}">
+
+                        <td th:text="${household.Id}"></td>
+
+                        <td th:text="${household.householdName}"></td>
+                        <td>
+                            <button type="button"
+                                    class="btn btn-primary btn-sm"
+                                    th:attr="data-id=${household.Id},
+
+                           data-name=${household.householdName}"
+                                    onclick="selectHousehold(this)">
+                                Select
+                            </button>
+                        </td>
+
+                    </tr>
+
+                    <tr th:if="${#lists.isEmpty(households)}">
+                        <td colspan="3" class="text-center">
+                            No applicant found.
+                        </td>
+                    </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function selectHousehold(button) {
+
+            if (window.opener && !window.opener.closed) {
+
+                window.opener.setHouseHold(
+                    button.dataset.id,
+                    button.dataset.name
+
+                );
+
+                window.close();
+            }
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+</main>
+
 </html>

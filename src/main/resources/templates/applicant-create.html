@@ -17,22 +17,7 @@
                 <form th:action="@{/applicant/save}"
                       method="post"
                       th:object="${applicant}">
-                    <div class="mb-3">
-                        <label class="form-label">Applicant</label>
-                        <input id="applicantId" name="applicantId"
-                               class="form-control" readonly
-                               placeholder="Select a Applicant">
-                        <button class="sm-3 btn btn-promary">Select a Applicant</button>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Address Type</label>
-                        <select required th:field="*{addressTyp}">
-                            <option value="">--Select Address Type--</option>
-                            <option value="Residence">Residence</option>
-                            <option value="Mainling">Mailing</option>
-                        </select>
-                    </div>
-                <div class="mb-3">
+                <div class="mb-e">
                     <label class="form-label">First Nmae</label>
                     <input th:field="*{firstName}" required class="form-control">
                 </div>

@@ -28,9 +28,9 @@ public class HouseHoldService {
         return householdRepository.findAll();
     }
 
-    public List<HouseHold> getHouseholdByName(String householdName)
+    public List<HouseHold> getHouseholdByIdByName(BigInteger householdId, String householdName)
     {
-        return householdRepository.findHouseholdByName(householdName);
+        return householdRepository.findHouseholdByIdByName(householdId, householdName);
     }
 
     public HouseHold getHouseholdById(BigInteger householdId)

@@ -1,0 +1,177 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------------------< com.yunhuang:eligibility >----------------------
+[INFO] Building Eligibility 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] >>> spring-boot:3.5.6:run (default-cli) > test-compile @ eligibility >>>
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ eligibility ---
+[INFO] Copying 3 resources from src\main\resources to target\classes
+[INFO] Copying 17 resources from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.14.0:compile (default-compile) @ eligibility ---
+[INFO] Recompiling the module because of added or removed source files.
+[INFO] Compiling 23 source files with javac [debug parameters release 25] to target\classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ eligibility ---
+[INFO] skip non existing resourceDirectory C:\Users\Yun Huang\IdeaProjects\Eligibility\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.14.0:testCompile (default-testCompile) @ eligibility ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 1 source file with javac [debug parameters release 25] to target\test-classes
+[INFO] 
+[INFO] <<< spring-boot:3.5.6:run (default-cli) < test-compile @ eligibility <<<
+[INFO] 
+[INFO] 
+[INFO] --- spring-boot:3.5.6:run (default-cli) @ eligibility ---
+[INFO] Attaching agents: []
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.5.6)
+
+2026-11-19T20:03:49.974-06:00  INFO 19568 --- [Payroll] [           main] c.y.eligibility.EligibilityApplication   : Starting EligibilityApplication using Java 25.0.4.1 with PID 19568 (C:\Users\Yun Huang\IdeaProjects\Eligibility\target\classes started by Yun Huang in C:\Users\Yun Huang\IdeaProjects\Eligibility)
+2026-11-19T20:03:49.986-06:00  INFO 19568 --- [Payroll] [           main] c.y.eligibility.EligibilityApplication   : The following 1 profile is active: "local"
+2026-11-19T20:03:53.441-06:00  INFO 19568 --- [Payroll] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-11-19T20:03:54.208-06:00  INFO 19568 --- [Payroll] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 701 ms. Found 5 JPA repository interfaces.
+2026-11-19T20:03:57.782-06:00  INFO 19568 --- [Payroll] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8083 (http)
+2026-11-19T20:03:58.242-06:00  INFO 19568 --- [Payroll] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-11-19T20:03:58.244-06:00  INFO 19568 --- [Payroll] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.46]
+2026-11-19T20:03:58.637-06:00  INFO 19568 --- [Payroll] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-11-19T20:03:58.643-06:00  INFO 19568 --- [Payroll] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 8474 ms
+2026-11-19T20:04:01.468-06:00  INFO 19568 --- [Payroll] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-11-19T20:04:01.833-06:00  INFO 19568 --- [Payroll] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.29.Final
+2026-11-19T20:04:02.004-06:00  INFO 19568 --- [Payroll] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-11-19T20:04:03.494-06:00  INFO 19568 --- [Payroll] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-11-19T20:04:03.657-06:00  INFO 19568 --- [Payroll] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::loadLibrary has been called by com.microsoft.sqlserver.jdbc.AuthenticationJNI in an unnamed module (file:/C:/Users/Yun%20Huang/.m2/repository/com/microsoft/sqlserver/mssql-jdbc/12.10.2.jre11/mssql-jdbc-12.10.2.jre11.jar)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+2026-11-19T20:04:06.044-06:00  WARN 19568 --- [Payroll] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 0, SQLState: 08S01
+2026-11-19T20:04:06.060-06:00 ERROR 19568 --- [Payroll] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : This driver is not configured for integrated authentication. ClientConnectionId:72968d7c-8998-4954-8dea-a7038ac9d45e
+2026-11-19T20:04:06.063-06:00  WARN 19568 --- [Payroll] [           main] o.h.e.j.e.i.JdbcEnvironmentInitiator     : HHH000342: Could not obtain connection to query metadata
+
+org.hibernate.exception.JDBCConnectionException: unable to obtain isolated JDBC connection [This driver is not configured for integrated authentication. ClientConnectionId:72968d7c-8998-4954-8dea-a7038ac9d45e] [n/a]
+	at org.hibernate.exception.internal.SQLStateConversionDelegate.convert(SQLStateConversionDelegate.java:100) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:58) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:108) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:94) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcIsolationDelegate.delegateWork(JdbcIsolationDelegate.java:116) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.getJdbcEnvironmentUsingJdbcMetadata(JdbcEnvironmentInitiator.java:334) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:129) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:81) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:130) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:238) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:215) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.boot.model.relational.Database.<init>(Database.java:45) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.getDatabase(InFlightMetadataCollectorImpl.java:226) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.<init>(InFlightMetadataCollectorImpl.java:194) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:171) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:1442) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1513) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:66) ~[spring-orm-6.2.11.jar:6.2.11]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:390) ~[spring-orm-6.2.11.jar:6.2.11]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:419) ~[spring-orm-6.2.11.jar:6.2.11]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:400) ~[spring-orm-6.2.11.jar:6.2.11]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:366) ~[spring-orm-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1873) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1822) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:607) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:207) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:970) ~[spring-context-6.2.11.jar:6.2.11]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627) ~[spring-context-6.2.11.jar:6.2.11]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.5.6.jar:3.5.6]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752) ~[spring-boot-3.5.6.jar:3.5.6]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439) ~[spring-boot-3.5.6.jar:3.5.6]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318) ~[spring-boot-3.5.6.jar:3.5.6]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361) ~[spring-boot-3.5.6.jar:3.5.6]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350) ~[spring-boot-3.5.6.jar:3.5.6]
+	at com.yunhuang.eligibility.EligibilityApplication.main(EligibilityApplication.java:10) ~[classes/:na]
+Caused by: com.microsoft.sqlserver.jdbc.SQLServerException: This driver is not configured for integrated authentication. ClientConnectionId:72968d7c-8998-4954-8dea-a7038ac9d45e
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.terminate(SQLServerConnection.java:4586) ~[mssql-jdbc-12.10.2.jre11.jar:na]
+	at com.microsoft.sqlserver.jdbc.AuthenticationJNI.<init>(AuthenticationJNI.java:78) ~[mssql-jdbc-12.10.2.jre11.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.logon(SQLServerConnection.java:5692) ~[mssql-jdbc-12.10.2.jre11.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection$LogonCommand.doExecute(SQLServerConnection.java:5681) ~[mssql-jdbc-12.10.2.jre11.jar:na]
+	at com.microsoft.sqlserver.jdbc.TDSCommand.execute(IOBuffer.java:7745) ~[mssql-jdbc-12.10.2.jre11.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.executeCommand(SQLServerConnection.java:4706) ~[mssql-jdbc-12.10.2.jre11.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connectHelper(SQLServerConnection.java:4139) ~[mssql-jdbc-12.10.2.jre11.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.login(SQLServerConnection.java:3695) ~[mssql-jdbc-12.10.2.jre11.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connectInternal(SQLServerConnection.java:3504) ~[mssql-jdbc-12.10.2.jre11.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connect(SQLServerConnection.java:2212) ~[mssql-jdbc-12.10.2.jre11.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerDriver.connect(SQLServerDriver.java:1320) ~[mssql-jdbc-12.10.2.jre11.jar:na]
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:127) ~[HikariCP-6.3.3.jar:na]
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:370) ~[HikariCP-6.3.3.jar:na]
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:207) ~[HikariCP-6.3.3.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:488) ~[HikariCP-6.3.3.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:576) ~[HikariCP-6.3.3.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:97) ~[HikariCP-6.3.3.jar:na]
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:111) ~[HikariCP-6.3.3.jar:na]
+	at org.hibernate.engine.jdbc.connections.internal.DatasourceConnectionProviderImpl.getConnection(DatasourceConnectionProviderImpl.java:126) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess.obtainConnection(JdbcEnvironmentInitiator.java:485) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcIsolationDelegate.delegateWork(JdbcIsolationDelegate.java:61) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	... 35 common frames omitted
+Caused by: java.lang.UnsatisfiedLinkError: Unable to load authentication DLL mssql-jdbc_auth-12.10.2.x64
+	at com.microsoft.sqlserver.jdbc.AuthenticationJNI.<clinit>(AuthenticationJNI.java:67) ~[mssql-jdbc-12.10.2.jre11.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.logon(SQLServerConnection.java:5691) ~[mssql-jdbc-12.10.2.jre11.jar:na]
+	... 53 common frames omitted
+
+2026-11-19T20:04:06.156-06:00  WARN 19568 --- [Payroll] [           main] org.hibernate.orm.deprecation            : HHH90000025: SQLServerDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-11-19T20:04:06.209-06:00  INFO 19568 --- [Payroll] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (null)']
+	Database driver: undefined/unknown
+	Database version: 11.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-11-19T20:04:11.604-06:00  INFO 19568 --- [Payroll] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-11-19T20:04:11.619-06:00  INFO 19568 --- [Payroll] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-11-19T20:04:12.628-06:00  INFO 19568 --- [Payroll] [           main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-11-19T20:04:13.169-06:00  WARN 19568 --- [Payroll] [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-11-19T20:04:13.233-06:00  INFO 19568 --- [Payroll] [           main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2026-11-19T20:04:14.548-06:00  WARN 19568 --- [Payroll] [           main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2026-11-19T20:04:14.553-06:00  INFO 19568 --- [Payroll] [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-11-19T20:04:15.018-06:00  INFO 19568 --- [Payroll] [           main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-11-19T20:04:15.089-06:00 ERROR 19568 --- [Payroll] [           main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8083 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8083 or configure this application to listen on another port.
+
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  01:29 min
+[INFO] Finished at: 2026-11-19T20:04:15-06:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.springframework.boot:spring-boot-maven-plugin:3.5.6:run (default-cli) on project eligibility: Process terminated with exit code: 1 -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException

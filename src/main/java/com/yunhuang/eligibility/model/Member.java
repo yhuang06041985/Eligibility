@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name="householdmembers")
-public class HouseholdMember {
+public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private BigInteger Id;
@@ -65,12 +65,12 @@ public class HouseholdMember {
         return relationship;
     }
 
-    public void setisPrimaryApplican(boolean isPrimaryApplicant)
+    public void setisPrimaryApplicant(boolean isPrimaryApplicant)
     {
         this.isPrimaryApplicant = isPrimaryApplicant;
     }
 
-    public boolean getisPrimaryApplican()
+    public boolean getisPrimaryApplicant()
     {
         return isPrimaryApplicant;
     }
@@ -103,5 +103,15 @@ public class HouseholdMember {
     public LocalDateTime getCreatedDate()
     {
         return createdDate;
+    }
+
+    public void setUpdatedDate(LocalDateTime updatedDate)
+    {
+        this.updatedDate = updatedDate;
+    }
+
+    public LocalDateTime getUpdatedDate()
+    {
+        return updatedDate;
     }
 }
