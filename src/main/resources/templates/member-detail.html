@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout(~{::main})}">
+
+<main>
+
+    <div class="container mt-4">
+
+        <div class="card shadow-sm">
+
+            <div class="card-header">
+                <h5>Household Member Create</h5>
+            </div>
+
+            <div class="card-body">
+
+                <form th:object="${member}">
+                    <div class="mb-3">
+                        <label class="form-label">Household Name</label>
+                        <input th:value="${member.householdName}">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Applicant Name</label>
+                        <input th:value="${member.fullName}">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Relationship</label>
+                        <input th:value="${member.relationship}"
+                               readonly class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Is Primary Applicant</label>
+                        <input type="checkbox" readonly
+                               th:value="${member.isPrimaryApplicant}" >
+
+                    </div>
+
+
+                    <div class="mb-3">
+                        <label class="form-label">Start Date</label>
+                        <input th:value="${#temporals.format(member.startDate, 'yyyy-MM-dd')}"
+                               type="date" readonly class="form-control">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">End Date</label>
+                        <input th:value="${#temporals.format(member.endDate, 'yyyy-MM-dd')}"
+                               type="date" readonly class="form-control">
+                    </div>
+
+                    <div class="mb-3">
+                        <a th:href="@{/member/list}" class="btn btn-primary">Back to List</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>>
+
+    <script>
+
+        function openApplicantWindow() {
+
+            window.open(
+                '/member/select-applicant',
+                'applicant-search',
+                'width=950,height=550'
+            );
+
+        }
+
+        // Called by the child window
+        function setApplicant(applicantId, applicantFullName) {
+
+            document.getElementById('applicantId').value = applicantId;
+
+            document.getElementById('applicantFullName').value = applicantFullName;
+
+        }
+
+        function openMemberWindow() {
+
+            window.open(
+                '/member/select-household',
+                'household-search',
+                'width=750,height=550'
+            );
+
+        }
+
+        // Called by the child window
+        function setHouseHold(householdId, householdFullName) {
+
+            document.getElementById('householdId').value = householdId;
+
+            document.getElementById('householdFullName').value = householdFullName;
+
+        }
+
+    </script>
+</main>
+
+
+</html>

@@ -1,18 +1,31 @@
 package com.yunhuang.eligibility.model;
 
+import java.math.BigInteger;
 import java.time.LocalDate;
 
 public class SearchMemberDto {
 
+    private Long id;
     private String householdName;
     private String fullName;
     private String relationship;
-    private boolean isPrimaryApplicant;
+    private Boolean isPrimaryApplicant;
     private LocalDate startDate;
 
-    public void setHouseholdName(String householdName)
+    public SearchMemberDto(Long id, String householdName
+    , String fullName, String relationship, Boolean isPrimaryApplicant, LocalDate startDate)
     {
+        this.id = id;
         this.householdName = householdName;
+        this.fullName = fullName;
+        this.relationship = relationship;
+        this.isPrimaryApplicant = isPrimaryApplicant;
+        this.startDate = startDate;
+    }
+
+    public Long getId()
+    {
+        return id;
     }
 
     public String getHouseholdName()
@@ -20,19 +33,9 @@ public class SearchMemberDto {
         return householdName;
     }
 
-    public void setFullName(String fullName)
-    {
-        this.fullName = fullName;
-    }
-
     public String getFullName()
     {
         return fullName;
-    }
-
-    public void setRelationship(String relationship)
-    {
-        this.relationship = relationship;
     }
 
     public String getRelationship()
@@ -40,19 +43,9 @@ public class SearchMemberDto {
         return relationship;
     }
 
-    public void setIsPrimaryApplicant(boolean isPrimaryApplicant)
-    {
-        this.isPrimaryApplicant = isPrimaryApplicant;
-    }
-
-    public boolean getIsPrimaryApplicant()
+    public Boolean getIsPrimaryApplicant()
     {
         return isPrimaryApplicant;
-    }
-
-    public void setStartDate(LocalDate startDate)
-    {
-        this.startDate = startDate;
     }
 
     public LocalDate getStartDate()

@@ -109,7 +109,7 @@ public class MemberController {
             model.addAttribute("member", new Member());
         }
         Member memberObj = memberSerice.saveMember(householdId, applicantId, member);
-        return "redirect:/";
+        return "redirect:/member/list";
     }
 
     @GetMapping("/list")
@@ -123,4 +123,11 @@ public class MemberController {
         return "member-list";
     }
 
+    @GetMapping("/detail/{id}")
+    public String displayMemeberDetail(@PathVariable("id") BigInteger id,
+                                       Model model)
+    {
+        model.addAttribute("member", memberSerice.getMemberById(id));
+        return "member-detail";
+    }
 }

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout(~{::main})}">
+
+<main>
+
+    <div class="container mt-4">
+
+        <div class="card shadow-sm">
+
+            <div class="card-header">
+                <h5>Income Record Create</h5>
+            </div>
+
+            <div class="card-body">
+
+                <form th:action="@{/income/save}"
+                      method="post"
+                      th:object="${income}">
+                    <!-- Hidden fields -->
+                    <input type="hidden" id="householdId" name="householdId">
+
+                    <div class="mb-3">
+
+                        <div class="input-group">
+
+                            <input type="text"
+                                   id="householdFullName"
+                                   class="form-control" required
+                                   placeholder="Select an Household"
+                                   readonly>
+                            <button type="button"
+                                    class="btn btn-outline-primary"
+                                    onclick="openMemberWindow()">
+                                Select
+                            </button>
+
+                        </div>
+                    </div>
+
+
+                    <div class="mb-3">
+                        <label class="form-label">Income Type</label>
+                        <input th:field="*{incomeType}"
+                               required class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Employee Name</label>
+                        <input th:field="*{employerName}"
+                               required class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Gross Amount</label>
+                        <input th:field="*{grossAmount}" type="number"
+                               required class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Pay Peiod</label>
+                        <input  th:field="*{payFrequency}" required >
+
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Monthly Amount</label>
+                        <input type="number" required th:field="*{monthlyAmount}" >
+
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Is Active</label>
+                        <input type="checkbox" th:field="*{isActive}" >
+
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Start Date</label>
+                        <input th:field="*{startDate}"  type="date" required class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">End Date</label>
+                        <input type="date" th:field="*{endDate}" class="form-control">
+                    </div>
+
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-primary">Create</button>
+                        <button type="reset" class="btn btn-secondary">Clear</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>>
+
+    <script>
+
+        function openApplicantWindow() {
+
+            window.open(
+                '/member/select-applicant',
+                'applicant-search',
+                'width=950,height=550'
+            );
+
+        }
+
+        // Called by the child window
+        function setApplicant(applicantId, applicantFullName) {
+
+            document.getElementById('applicantId').value = applicantId;
+
+            document.getElementById('applicantFullName').value = applicantFullName;
+
+        }
+
+        function openMemberWindow() {
+
+            window.open(
+                '/member/select-household',
+                'household-search',
+                'width=750,height=550'
+            );
+
+        }
+
+        // Called by the child window
+        function setHouseHold(householdId, householdFullName) {
+
+            document.getElementById('householdId').value = householdId;
+
+            document.getElementById('householdFullName').value = householdFullName;
+
+        }
+
+    </script>
+</main>
+
+
+</html>

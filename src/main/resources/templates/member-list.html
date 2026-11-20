@@ -41,13 +41,10 @@
                                    name="lastName"
                                    class="form-control"
                                    th:value="${lastName}">
-                        </div>
-
-                        <div class="col-md-12 mt-3">
-                            <button type="submit"
-                                    class="btn btn-primary">
-                                Search
-                            </button>
+                            &nbsp;<button type="submit"
+                                          class="btn btn-primary">
+                            Search
+                        </button>
                         </div>
 
                     </div>
@@ -74,13 +71,13 @@
                 <tbody>
                 <tr th:each="member : ${members}">
                     <td th:text="${member.householdName}"></td>
-                    <td th:text="${member.fullNmae}"></td>
+                    <td th:text="${member.fullName}"></td>
                     <td th:text="${member.relationship}"></td>
-                    <td th:text="${memeber.isPrimaryApplicant}"></td>
+                    <td th:text="${member.isPrimaryApplicant}"></td>
                     <td th:text="${startDate}"></td>
 
                     <td>
-                        <a th:href="@{/member/details/{id}(id=${member.id})}">Details</a>
+                        <a th:href="@{/member/detail/{id}(id=${member.id})}">Details</a>
                         <a th:href="@{/member/delete/{id}(id=${member.id})}"
                            class="btn btn-danger"
                            onclick="return confirm('Are you sure you want to delete this address?')">

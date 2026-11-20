@@ -5,6 +5,7 @@ import com.yunhuang.eligibility.model.HouseHold;
 import com.yunhuang.eligibility.model.Member;
 import com.yunhuang.eligibility.model.SearchMemberDto;
 import com.yunhuang.eligibility.repository.MemberRepository;
+import com.yunhuang.eligibility.repository.SearchMemberProjection;
 import org.springframework.stereotype.Service;
 
 import java.math.BigInteger;
@@ -37,8 +38,23 @@ public class MemberSerice {
         return memberRepository.save(member);
     }
 
-    public List<SearchMemberDto> searchMember(String householdName, String firstName, String lastName)
+    public List<SearchMemberProjection> searchMember(
+            String householdName, String firstName, String lastName) {
+
+        return memberRepository.findMemberByhouseholdNameByApplicantName(
+                householdName, firstName, lastName);
+    }
+
+    public SearchMemberProjection getMemberById(BigInteger id)
     {
-        return memberRepository.findMemberByhouseholdNameByApplicantName(householdName, firstName, lastName);
+        return memberRepository.findMemberById(id);
+    }
+
+    public void removeMember(BigInteger id)
+    {
+        Member deleteObj = memberRepository.findById(id).orElse(null);
+        if (deleteObj != null)
+            memberRepository.delete(deleteObj);
+        return;
     }
 }
