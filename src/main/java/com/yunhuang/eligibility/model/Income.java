@@ -18,7 +18,7 @@ public class Income {
     @JoinColumn(name = "householdMemberId", nullable = false)
     private Member member;
     private String incomeType;
-    private String employeeName;
+    private String employerName;
     private BigDecimal grossAmount;
     private BigDecimal monthlyAmount;
     private String payFrequency;
@@ -42,6 +42,11 @@ public class Income {
         this.member = member;
     }
 
+    public Member getMember()
+    {
+        return member;
+    }
+
     public void setIncomeType(String incomeType)
     {
         this.incomeType = incomeType;
@@ -52,17 +57,17 @@ public class Income {
         return incomeType;
     }
 
-    public void setEmployeeName(String employeeName)
+    public void setEmployerName(String employerName)
     {
-        this.employeeName = employeeName;
+        this.employerName = employerName;
     }
 
-    public String getEmployeeName()
+    public String getEmployerName()
     {
-        return employeeName;
+        return employerName;
     }
 
-    public void getGrossAmount(BigDecimal grossAmount)
+    public void setGrossAmount(BigDecimal grossAmount)
     {
         this.grossAmount = grossAmount;
     }

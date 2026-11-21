@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout(~{::main})}">
+
+<!-- Main Content -->
+<main class="container-fluid dashboard-container">
+    <div class="container mt-4">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h3 class="mb-0">Search Household</h3>
+            <a th:href="@{/income/new}" class="btn btn-info">
+                Create Income
+            </a>
+        </div>
+
+        <!-- Search Form -->
+        <div class="card mb-4">
+            <div class="card-body">
+
+                <form th:action="@{/income/list}"
+                      method="get">
+
+                    <div class="row mb-3">
+
+                        <div class="col-md-5">
+                            <label class="form-label">Household Name</label>
+                            <input type="text"
+                                   name="householdName"
+                                   class="form-control"
+                                   th:value="${householdname}">
+                        </div>
+                        <div class="col-md-5">
+                            <label class="form-label">Member First Name</label>
+                            <input type="text"
+                                   name="firstName"
+                                   class="form-control"
+                                   th:value="${firstName}">
+                        </div>
+                        <div class="col-md-5">
+                            <label class="form-label">Member Last Name</label>
+                            <input type="text"
+                                   name="lastName"
+                                   class="form-control"
+                                   th:value="${lastName}">
+                            &nbsp;<button type="submit"
+                                          class="btn btn-primary">
+                            Search
+                        </button>
+                        </div>
+
+
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+
+
+        <div class="table-responsive">
+            <table class="table table-striped table-hover table-bordered">
+                <thead class="table-dark">
+                <tr>
+                    <th>Household Name</th>
+                    <th>Member name</th>
+                    <th>Monthly Income</th>
+                    <th>Is Active</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr th:each="income : ${incomes}">
+                    <td th:text="${income.householdName}"></td>
+                    <td th:text="${income.memberName}"></td>
+                    <td th:text="${income.monthlyAmount}"></td>
+                    <td th:text="${income.isActive}"></td>
+
+                    <td>
+                        <a th:href="@{/income/edit/{id}(id=${income.id})}">Update</a>
+                        <a th:href="@{/income/detail/{id}(id=${income.id})}">Details</a>
+                        <a th:href="@{/income/delete/{id}(id=${income.id})}"
+                           class="btn btn-danger"
+                           onclick="return confirm('Are you sure you want to delete this income?')">
+                            Delete</a>
+                    </td>
+
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+</main>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</html>

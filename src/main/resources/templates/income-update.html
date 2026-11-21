@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout(~{::main})}">
+
+<main>
+
+    <div class="container mt-4">
+        <div class="card shadow-sm">
+
+            <div class="card-header">
+                <h5>Income Update</h5>
+            </div>
+
+            <div class="card-body">
+
+                <form th:action="@{/income/update/{id}(id=${income.id})}"
+                      method="post"
+                      th:object="${income}">
+
+                    <input th:value="${income.id}" name="incomeId" hidden>
+                    <div class="mb-e">
+                        <label class="form-label">Household Nmae</label>
+                        <input th:value="${householdName}" readonly class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Member Name</label>
+                        <input th:value="${member.applicant.firstName + ' ' + member.applicant.lastName}" readonly class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Employer Name</label>
+                        <input th:field="*{employerName}" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label"> Income Type </label>
+                        <input  th:field="*{incomeType}" class="form-control">
+
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label"> Gross Amount </label>
+                        <input type="number" th:field="*{grossAmount}" class="form-control">
+
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label"> Pay  Frequency </label>
+                        <input  th:field="*{payFrequency}" class="form-control">
+
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Monthly Amount </label>
+                        <input type="number" th:field="*{monthlyAmount}" class="form-control">
+
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Status</label>
+                        <input type="checkbox"
+                               th:checked="${income.isActive}"
+                               class="form-check-input"
+                               >
+                        <label th:text="${income.isActive ? 'Active' : 'Inactive'}"></label>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label"> Start Date</label>
+                        <input type="date"
+                               name="startDate"
+                               th:value="${#temporals.format(income.startDate, 'yyyy-MM-dd')}"
+                               class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label"> End Date</label>
+                        <input type="date"
+                               name="startDate"
+                               th:value="${#temporals.format(income.EndDate, 'yyyy-MM-dd')}"
+                               class="form-control">
+                    </div>
+
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-primary">Update</button>
+                        <button type="reset" class="btn btn-secondary">Clear</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</main>
+</html>

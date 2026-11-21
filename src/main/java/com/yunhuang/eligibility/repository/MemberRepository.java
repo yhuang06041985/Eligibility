@@ -43,8 +43,7 @@ public interface MemberRepository extends JpaRepository<Member, BigInteger> {
             hm.relationship as relationship,
             hm.isPrimaryApplicant as isPrimaryApplicant,
             hm.startDate as startDate,
-            hm.endDate as endDate
-            
+            hm.endDate as endDate        
      from HouseholdMembers hm
      Inner Join Households h
      On hm.householdId = h.id
@@ -54,6 +53,29 @@ public interface MemberRepository extends JpaRepository<Member, BigInteger> {
 """, nativeQuery = true)
     SearchMemberProjection findMemberById(
             @Param("id") BigInteger id);
+
+    @Query(value= """
+      Select  hm.id as id,
+             h.householdName as householdName,
+            CONCAT(ap.firstName, ' ', ap.lastName) as fullName,
+            hm.relationship as relationship,
+            hm.isPrimaryApplicant as isPrimaryApplicant,
+            hm.startDate as startDate,
+            hm.endDate as endDate  
+      from HouseholdMembers hm
+      INNER JOIN Households h
+      on hm.householdId = h.id
+      Inner Join Applicants ap
+      On hm.applicantId = ap.id
+      Where (:householdName is null OR h.householdName like CONCAT('%', :householdName, '%') )
+        AND (:firstName is null OR ap.firstName like CONCAT('%', :firstName, '%') )
+        And (:lastName is null OR ap.lastName like CONCAT('%', :lastName, '%') )
+        """, nativeQuery = true)
+        List<SearchMemberProjection> findMemberByHouseholdByApplicant(
+          @Param("householdName") String householdName,
+          @Param("firstName") String firstName,
+          @Param("lastName") String lastName
+        );
 
 }
 

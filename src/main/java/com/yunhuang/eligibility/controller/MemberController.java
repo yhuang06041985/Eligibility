@@ -98,6 +98,8 @@ public class MemberController {
 
         return "household-search";
     }
+
+
     @PostMapping("/save")
     public String saveHouseholdMember(@Valid @ModelAttribute("member") Member member,
                                       @RequestParam("applicantId") BigInteger applicantId,

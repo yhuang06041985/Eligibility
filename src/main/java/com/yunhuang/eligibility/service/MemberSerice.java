@@ -5,6 +5,7 @@ import com.yunhuang.eligibility.model.HouseHold;
 import com.yunhuang.eligibility.model.Member;
 import com.yunhuang.eligibility.model.SearchMemberDto;
 import com.yunhuang.eligibility.repository.MemberRepository;
+import com.yunhuang.eligibility.repository.SearchMemberByHouseholdProj;
 import com.yunhuang.eligibility.repository.SearchMemberProjection;
 import org.springframework.stereotype.Service;
 
@@ -56,5 +57,14 @@ public class MemberSerice {
         if (deleteObj != null)
             memberRepository.delete(deleteObj);
         return;
+    }
+
+    public List<SearchMemberProjection> getMemberByHouseholdByApplicant(
+            String householdName,
+            String firstName,
+            String lastName
+    )
+    {
+        return memberRepository.findMemberByHouseholdByApplicant(householdName, firstName, lastName);
     }
 }

@@ -18,14 +18,14 @@
                       method="post"
                       th:object="${income}">
                     <!-- Hidden fields -->
-                    <input type="hidden" id="householdId" name="householdId">
+                    <input type="hidden" id="memberId" name="memberId">
 
                     <div class="mb-3">
 
                         <div class="input-group">
-
+                            <lable class="form-control">Member Name</lable>
                             <input type="text"
-                                   id="householdFullName"
+                                   id="memberFullName"
                                    class="form-control" required
                                    placeholder="Select an Household"
                                    readonly>
@@ -43,9 +43,10 @@
                         <label class="form-label">Income Type</label>
                         <input th:field="*{incomeType}"
                                required class="form-control">
+
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Employee Name</label>
+                        <label class="form-label">employer Name</label>
                         <input th:field="*{employerName}"
                                required class="form-control">
                     </div>
@@ -92,41 +93,22 @@
 
     <script>
 
-        function openApplicantWindow() {
-
-            window.open(
-                '/member/select-applicant',
-                'applicant-search',
-                'width=950,height=550'
-            );
-
-        }
-
-        // Called by the child window
-        function setApplicant(applicantId, applicantFullName) {
-
-            document.getElementById('applicantId').value = applicantId;
-
-            document.getElementById('applicantFullName').value = applicantFullName;
-
-        }
-
         function openMemberWindow() {
 
             window.open(
-                '/member/select-household',
-                'household-search',
+                '/income/select-member',
+                'member-search',
                 'width=750,height=550'
             );
 
         }
 
         // Called by the child window
-        function setHouseHold(householdId, householdFullName) {
+        function setMember(memberId, memberFullName) {
 
-            document.getElementById('householdId').value = householdId;
+            document.getElementById('memberId').value = memberId;
 
-            document.getElementById('householdFullName').value = householdFullName;
+            document.getElementById('memberFullName').value = memberFullName;
 
         }
 
